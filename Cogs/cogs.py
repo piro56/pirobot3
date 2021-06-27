@@ -1,11 +1,22 @@
 from discord.ext import commands
 import discord
-from Utils.Checks import is_botadmin
+from Utils.Checks import is_botadmin, is_serveradmin
+from Utils.Config import Config
 import sys,os,logging
 import datetime, pytz
 class Cogs(commands.Cog):
     def __init__(self,client):
         self.client = client
+        self.server_prefixes = Config("./JSONs/prefixes.json")
+    @commands.command(name="prefix")
+    @is_serveradmin()
+    async def _prefix(self, ctx, prefix):
+        if len(prefix) > 2:
+            await ctx.channel.send("`Prefix too long!`")
+            return
+        #self.server_prefixes[str(ctx.guild.id)] = prefix
+        self.client.server_prefixes[str(ctx.guild.id)] = prefix
+        await ctx.channel.send(f"Prefix is now {prefix}")
     @commands.command(name="reload")
     @is_botadmin()
     async def _reload(self,ctx, cog):
