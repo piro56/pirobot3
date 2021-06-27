@@ -2,6 +2,7 @@ from discord.ext import commands
 import discord
 from Utils.Checks import is_botadmin
 import sys,os,logging
+import datetime, pytz
 class Cogs(commands.Cog):
     def __init__(self,client):
         self.client = client
@@ -104,6 +105,20 @@ class Cogs(commands.Cog):
         except Exception as e:
             logging.error(e)
         os.execv(sys.executable, [sys.executable, __file__] + sys.argv)
+
+    @commands.command(name="ping")
+    async def ping(self,ctx):
+        await ctx.channel.send(f"Pong :ping_pong:!  `{round(self.client.latency * 1000)}ms`")
+    @commands.command(name="uptime")
+    async def uptime(self,ctx):
+        oldtz = pytz.timezone("UTC")
+        newtz = pytz.timezone("US/Pacific")
+        localizedtz = oldtz.localize(self.client.uptime)
+        timdelta = datetime.datetime.now(newtz) - localizedtz.astimezone(newtz)
+        hours, remainder = divmod(timdelta.total_seconds(), 3600)
+        minutes,seconds = divmod(remainder, 60)
+        await ctx.channel.send(f"`{round(hours)} hours {round(minutes)} minutes {round(seconds)} seconds`")
+
 
 def setup(client):
     client.add_cog(Cogs(client))

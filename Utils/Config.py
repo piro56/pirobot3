@@ -33,7 +33,7 @@ class Config():
             json.dump(self._db, f, indent=4)
 
     def pop(self, key):
-        self._db.pop([str(key)])
+        self._db.pop(str(key))
         with open(self.name, 'w') as f:
             json.dump(self._db, f, indent=4)
 

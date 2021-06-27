@@ -31,18 +31,6 @@ def is_botadmin():
                 return False
     return commands.check(predicate)
 
-
-def is_Whitelisted_RaidSearch():
-    async def predicate(ctx):
-        with open("./JSONs/raidsearchwhitelist.json", 'r') as f:
-            whitelisted = json.load(f)
-            if ctx.author.id in whitelisted["SEARCH"]:
-                return True
-            else:
-                await ctx.channel.send(f"{ctx.author.mention} you are not whitelisted for this command!")
-                return False
-    return commands.check(predicate)
-
 def OnlyCCSD():
     async def predicate(ctx):
         return ctx.guild.id == 654323128369020949
@@ -50,14 +38,14 @@ def OnlyCCSD():
 
 
 
-def is_Whitelisted_CommandSearch():
+def anisearchWhitelist():
     async def predicate(ctx):
-        with open("./JSONs/raidsearchwhitelist.json", 'r') as f:
+        with open("./JSONs/anisearch.json", 'r') as f:
             whitelisted = json.load(f)
-            if ctx.author.id in whitelisted["COMMANDS"]:
+            if whitelisted.get(str(ctx.author.id)):
                 return True
             else:
-                await ctx.channel.send(f"{ctx.author.mention} you are not whitelisted for this command!")
+                await ctx.channel.send(f"{ctx.author.mention} you are not whitelisted for PiroSearch!")
                 return False
     return commands.check(predicate)
 
