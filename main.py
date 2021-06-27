@@ -76,7 +76,6 @@ class PiroBot(commands.Bot):
         await self.process_commands(message)
 
         if(message.author.id == 393982976125435934):
-            print(message.content)
             if("TEST123" in message.content):
                 await message.channel.send("TEST!!!")
     def run(self):
