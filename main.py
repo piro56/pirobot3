@@ -13,7 +13,9 @@ load_dotenv()
 log = logging.getLogger(__name__)
 description = """This is PiroBot, a bot written by Piro#0056 for random commands!"""
 startup_cogs = [
-    "Cogs.cogs"
+    "Cogs.cogs",
+    "Cogs.anigame",
+    "Cogs.datamanager"
 ]
 def _prefix_callable(bot,msg):
     if msg.guild is not None:
@@ -70,8 +72,13 @@ class PiroBot(commands.Bot):
             # All other Errors not returned come here. And we can just print the default TraceBack.
             print('Ignoring exception in command {}:'.format(ctx.command), file=sys.stderr)
             traceback.print_exception(type(exception), exception, exception.__traceback__, file=sys.stderr)
+    async def on_message(self, message):
+        await self.process_commands(message)
 
-
+        if(message.author.id == 393982976125435934):
+            print(message.content)
+            if("TEST123" in message.content):
+                await message.channel.send("TEST!!!")
     def run(self):
         try:
             super().run(self.client_token, reconnect=True)
