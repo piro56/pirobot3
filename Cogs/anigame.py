@@ -34,7 +34,7 @@ class AnigameCog(commands.Cog):
         self.messages = Config("./JSONs/messages.json")
     @commands.Cog.listener(name="on_message")
     async def on_message(self, msg):
-        if f"<@!{self.client.user.id}>" in msg.content:
+        if self.client.user.mentioned_in(msg):
             await msg.channel.send(f"{random.choice(self.messages['PINGED'])} "
                                    f"`Prefix: {self.client.server_prefixes.get(msg.guild.id, '~')}`")
         # .cinfo
