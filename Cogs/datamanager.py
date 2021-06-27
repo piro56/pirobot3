@@ -107,6 +107,9 @@ class DataManager(commands.Cog):
         else:
             await ctx.channel.send(f"`Unknown Setting Value! {value}`")
             return
+        if type(author_settings[setting]) != type(value):
+            await ctx.channel.send("Invalid type for this setting!")
+            return
         author_settings[setting] = value
         self._raidsearchlist[str(ctx.author.id)] = author_settings
         rgb = author_settings["RGB"]

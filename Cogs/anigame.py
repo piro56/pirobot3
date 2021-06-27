@@ -45,8 +45,8 @@ class AnigameCog(commands.Cog):
                 await msg.delete()
                 await msg.channel.send(embed=self.cardEmbed(cardinfo))
             # Raid Search
-            elif ".rd lobbies" in msg.content and self.searchsettings.get(str(msg.author.id)):
-                if(self.searchsettings[str(msg.author.id)][6]):
+            elif ".rd lobbies" in msg.content and str(msg.author.id) in self.searchsettings:
+                if self.searchsettings[str(msg.author.id)]["DELETESEARCH"]:
                     await msg.delete(delay=10)
             elif msg.embeds[0].footer.text:
                 #if "Note: You have to clear a location/stage" in msg.embeds[0].footer.text and "393982976125435934" in msg.embeds[0].author.icon_url:
