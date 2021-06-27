@@ -64,7 +64,7 @@ class PiroBot(commands.Bot):
         if cog:
             if cog._get_overridden_method(cog.cog_command_error) is not None:
                 return
-        ignored = (commands.CommandNotFound, TimeoutError)
+        ignored = (commands.CommandNotFound, TimeoutError, commands.MissingRequiredArgument, commands.MissingPermissions)
         if isinstance(exception, ignored):
             return
         elif isinstance(exception, commands.CommandOnCooldown):
