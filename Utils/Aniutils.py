@@ -2,7 +2,8 @@ import math
 
 import discord
 from math import floor
-
+from Utils.AnidexConfig import AniConfig
+cards = AniConfig("./JSONs/cards.json")
 rarityDict = {
     "COMMON":1,
     "C":1,
@@ -87,7 +88,7 @@ def processRaidParty(embed, emojis):
     )
     piroEmbed.set_author(name=embed.author.name, icon_url=embed.author.icon_url)
     piroEmbed.set_footer(text=embed.footer.text)
-    piroEmbed.set_thumbnail(url=embed.thumbnail.url)
+    #piroEmbed.set_thumbnail(url=embed.thumbnail.url)
     desc = embed.description
     time_left_line = ""
     for line in embed.title.splitlines():
@@ -98,6 +99,8 @@ def processRaidParty(embed, emojis):
     hrs = (int)(time_left_line[0].replace('\u200b' or ' ', ''))
     timeLeft = (int)(time_left_line[1].split('m')[0].replace('\u200b' or ' ', '')) + hrs * 60
     list_Lines = desc.splitlines()
+    name = (" ".join(list_Lines[0].split("[")[0].split("Level")[1].split(" ")[2:])).strip()
+    piroEmbed.set_thumbnail(url=cards.get_precise(name)[0]["LINK"])
     list_Lines[1] = list_Lines[1].replace("**", "")
     firstnum = list_Lines[1].split('/')[0].replace('\u200b' or ' ', '')
     hp_left = int(firstnum)

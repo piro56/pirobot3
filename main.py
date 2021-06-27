@@ -9,7 +9,7 @@ import datetime
 import sys
 import math
 # PRELOADING
-###TODO: except missing arg error
+###TODO: RAID PARTY IMAGE
 load_dotenv()
 log = logging.getLogger(__name__)
 description = """This is PiroBot, a bot written by Piro#0056 for random commands!"""
