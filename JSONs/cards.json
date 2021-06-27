@@ -42,7 +42,7 @@
         "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858518563852386344/card.png"
     },
     "Teruki Hanazawa": {
-        "Element": "Light \u2600\ufe0f",
+        "ELEMENT": "Light \u2600\ufe0f",
         "HP": 77,
         "ATK": 87,
         "DEF": 80,
@@ -52,8 +52,8 @@
         "LOC": 0,
         "FLOOR": 0,
         "TALENT": "Precision",
-        "QUOTE": "A star is shining not because it's being showered in light, but because he who emits light is a star. | ID: 435",
-        "LINK": "https://cdn.discordapp.com/attachments/777249492256817164/794418863931392040/card.png"
+        "QUOTE": "A star is shining not because it's being showered in light, but because he who emits light is a star. | ID: 463",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858769427498663956/card.png"
     },
     "Yuzuru Otonashi": {
         "ELEMENT": "Neutral \u2728",
@@ -406,7 +406,7 @@
         "LINK": "https://cdn.discordapp.com/attachments/730985665969389588/794419814482444308/card.png"
     },
     "Gowther": {
-        "Element": "Water \ud83d\udca7",
+        "ELEMENT": "Water \ud83d\udca7",
         "HP": 89,
         "ATK": 63,
         "DEF": 82,
@@ -416,11 +416,11 @@
         "LOC": 0,
         "FLOOR": 0,
         "TALENT": "Trick Room",
-        "QUOTE": "What I desire is a heart\u2026 A heart that understands emotions. | ID: 125",
-        "LINK": "https://cdn.discordapp.com/attachments/755927081195667526/794416653554548756/card.png"
+        "QUOTE": "What I desire is a heart\u2026 A heart that understands emotions. | ID: 133",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858769504719601694/card.png"
     },
     "Sora": {
-        "Element": "Fire \ud83d\udd25",
+        "ELEMENT": "Fire \ud83d\udd25",
         "HP": 92,
         "ATK": 55,
         "DEF": 76,
@@ -430,8 +430,8 @@
         "LOC": 0,
         "FLOOR": 0,
         "TALENT": "Trick Room",
-        "QUOTE": "Life is not a game of luck. If you wanna win, work hard. | ID: 412",
-        "LINK": "https://cdn.discordapp.com/attachments/730985665969389588/794415088336633886/card.png"
+        "QUOTE": "Life is not a game of luck. If you wanna win, work hard. | ID: 440",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858769524412383272/card.png"
     },
     "Benedict Blue": {
         "ELEMENT": "Water \ud83d\udca7",
@@ -712,5 +712,47 @@
         "TALENT": "Underdog",
         "QUOTE": "Is that all you got?! | ID: 339",
         "LINK": "https://cdn.discordapp.com/attachments/833777219822157846/858548050947342356/card.png"
+    },
+    "Yuta Okkotsu": {
+        "ELEMENT": "Dark \ud83c\udf19",
+        "HP": 85,
+        "ATK": 93,
+        "DEF": 73,
+        "SPD": 76,
+        "TOTAL": 327,
+        "SERIES": "Jujutsu Kaisen",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Paralysis",
+        "QUOTE": "Sorry, did I scare you? | ID: 520",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858769397367046204/card.png"
+    },
+    "Arataka Reigen": {
+        "ELEMENT": "Neutral \u2728",
+        "HP": 85,
+        "ATK": 70,
+        "DEF": 87,
+        "SPD": 75,
+        "TOTAL": 317,
+        "SERIES": "Mob Psycho 100",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Trick Room",
+        "QUOTE": "If you misuse a power that's all too great, you will only destroy yourself. | ID: 26",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858769442556870676/card.png"
+    },
+    "Izumo Kamiki": {
+        "ELEMENT": "Dark \ud83c\udf19",
+        "HP": 93,
+        "ATK": 75,
+        "DEF": 82,
+        "SPD": 76,
+        "TOTAL": 326,
+        "SERIES": "Ao No Exorcist",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Trick Room",
+        "QUOTE": "I was always alone. What the hell am I fighting for? | ID: 178",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858769465105580062/card.png"
     }
 }

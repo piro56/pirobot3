@@ -19,9 +19,9 @@
         "LASTUSERNAME": ""
     },
     "393982976125435934": {
-        "ENABLED": false,
+        "ENABLED": true,
         "MOBILE": true,
-        "HIGHCHANCEONLY": false,
+        "HIGHCHANCEONLY": true,
         "RGB": [
             69,
             101,
@@ -29,7 +29,7 @@
         ],
         "DELETE": true,
         "DELETEDELAY": 10,
-        "DELETESEARCH": false,
+        "DELETESEARCH": true,
         "LASTUSERNAME": "Piro"
     }
 }

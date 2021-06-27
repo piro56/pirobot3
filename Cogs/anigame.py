@@ -10,6 +10,7 @@ from Utils.Functions import intTryParse
 from math import floor
 from Utils.Checks import is_botadmin
 import time
+import random
 import typing
 elementDict = {
     "Grass 🍃": discord.Colour.from_rgb(21, 173, 34),
@@ -30,11 +31,15 @@ class AnigameCog(commands.Cog):
         self.searchsettings = Config("./JSONs/anisearch.json")
         self.locations = Config("./JSONs/locationinfo.json")
         self.load_emojis()
+        self.messages = Config("./JSONs/messages.json")
     @commands.Cog.listener(name="on_message")
-    async def on_message(self,msg):
+    async def on_message(self, msg):
+        if f"<@!{self.client.user.id}>" in msg.content:
+            await msg.channel.send(f"{random.choice(self.messages['PINGED'])} "
+                                   f"`Prefix: {self.client.server_prefixes.get(msg.guild.id, '~')}`")
         # .cinfo
         if(len(msg.embeds) != 0 and msg.author.id == 571027211407196161):
-            if("**Card Series:**" in msg.embeds[0].description and not ("**Familiarity" in msg.embeds[0].description)):
+            if(msg.embeds[0].description and "**Card Series:**" in msg.embeds[0].description and not ("**Familiarity" in msg.embeds[0].description)):
                 Aniutils.process_card(msg.embeds[0], self.anidex, self.linkConfig)
                 cardinfo = self.anidex.get_precise(msg.embeds[0].title.split("*")[2])
                 await msg.delete()
@@ -50,6 +55,8 @@ class AnigameCog(commands.Cog):
                     partyEmbed = Aniutils.processRaidParty(msg.embeds[0], self.emojis)
                     await msg.channel.send(embed=partyEmbed)
                     await msg.delete()
+            elif "Challenging Floor" in msg.embeds[0].title:
+                await self.deleting_battles_func(msg, msg.embeds[0])
 
 
     @commands.command(aliases=["cinfo","ci"])
@@ -269,7 +276,23 @@ class AnigameCog(commands.Cog):
                 await self.client.wait_for('message_edit', check=check, timeout=60)
             except asyncio.TimeoutError:
                 break
-
+    async def deleting_battles_func(self, msg, embed):
+        await msg.add_reaction("🗑️")
+        def reaction_check(reaction: discord.Reaction, user: discord.user):
+            if msg.embeds and msg.author.id == 571027211407196161:
+                try:
+                    if user.name in reaction.message.embeds[0].description.splitlines()[0] and "Challenging Floor" in embed.title:
+                        return reaction.message == msg
+                except:
+                    return False
+            return False
+        try:
+            reaction, user = await self.client.wait_for('reaction_add', check=reaction_check, timeout=180.0)
+        except:
+            return
+        if reaction.emoji == "🗑️":
+            await msg.channel.send(random.choice(self.messages["DELETE"]))
+            await msg.delete()
 
 
 def setup(client):

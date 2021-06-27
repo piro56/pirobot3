@@ -4,6 +4,7 @@ from discord.ext import commands
 from Utils.Config import Config
 import discord
 from Utils import Checks
+from Utils.Functions import intTryParse
 
 class DataManager(commands.Cog):
     def __init__(self,client):
@@ -77,6 +78,41 @@ class DataManager(commands.Cog):
             await ctx.channel.send(embed=emb)
         else:
             await ctx.channel.send(f"`Removed: {id}`")
+    @_raidsearch.command(name="settings")
+    @Checks.anisearchWhitelist()
+    async def _raidsearchsetting(self, ctx):
+        author_settings = self._raidsearchlist[str(ctx.author.id)]
+        rgb = author_settings["RGB"]
+        _embed = discord.Embed(title="Raid Search Settings",
+                               color=discord.Color.from_rgb(rgb[0],rgb[1],rgb[2]))
+        for setting in author_settings.keys():
+            _embed.add_field(name=setting.capitalize(), value=str(author_settings[setting]), inline=False)
+        await ctx.channel.send(embed=_embed)
+    @_raidsearch.command(name="set")
+    @Checks.anisearchWhitelist()
+    async def _raidsearchset(self, ctx, setting, value):
+        author_settings = self._raidsearchlist[str(ctx.author.id)]
+        setting = setting.upper()
+        value = value.upper()
+        intval = intTryParse(value)
+        if setting not in author_settings.keys() or setting == "LASTUSERNAME":
+            await ctx.channel.send(f"`Unknown Setting {setting}`")
+            return
+        if value == "TRUE":
+            value = True
+        elif value == "FALSE":
+            value = False
+        elif intval[1]:
+            value = intval[0]
+        else:
+            await ctx.channel.send(f"`Unknown Setting Value! {value}`")
+            return
+        author_settings[setting] = value
+        self._raidsearchlist[str(ctx.author.id)] = author_settings
+        rgb = author_settings["RGB"]
+        _emb = discord.Embed(title='Success!', color=discord.Color.from_rgb(rgb[0],rgb[1],rgb[2]))
+        _emb.description=f'{setting} is now {value}'
+        await ctx.channel.send(embed=_emb)
 
 def setup(client):
     client.add_cog(DataManager(client))
