@@ -1,0 +1,227 @@
+{
+  "Amplifier" : {
+    "Base" : "Increase the ATK of all allied familiars by __13%__ for each allied familiar of the same type as the wielder. (This effect is doubled if your team only consists of 1 familiar)",
+    "SR" : "Increase the ATK/DEF of all allied familiars by __23%__ for each allied familiar of the same type as the wielder. (This effect is doubled if your team only consists of 1 familiar)",
+    "UR" : "Increase the ATK/DEF of all allied familiars by __26%__ for each allied familiar of the same type as the wielder. (This effect is doubled if your team only consists of 1 familiar)"
+  },
+  "Balancing Strike": {
+    "Base": " If your HP % is lower than the enemy's HP %, deal __15%__ of your base HP as True damage. Otherwise, this skill does 5% damage.",
+    "SR" : "If your HP % is lower than the enemy's HP %, deal __27%__ of your base HP as True damage. Otherwise, this skill does __9%__ damage.",
+    "UR" : "If your HP % is lower than the enemy's HP %, deal __30%__ of your base HP as True damage. Otherwise, this skill does __10%__ damage."
+  },
+  "Blaze" : {
+    "Base": "Inflict a stack of **Burn** to enemy familiars, dealing __10%__ **True** damage per turn, as well as reducing all healing effects on them by **75%**.",
+    "SR":  "Inflict a stack of **Burn** to enemy familiars, dealing __10%__ **True** damage per turn, as well as reducing all healing effects on them by **75%**.",
+    "UR":  "Inflict a stack of **Burn** to enemy familiars, dealing __10%__ **True** damage per turn, as well as reducing all healing effects on them by **75%**."
+  },
+  "Breaker" : {
+    "Base" : "Decrease the ATK/DEF of all enemy familiars by __20%__.",
+    "SR" : "Decrease the ATK/DEF of all enemy familiars by __36%__.",
+    "UR" : "Decrease the ATK/DEF of all enemy familiars by __40%__."
+  },
+  "Dexterity Drive" : {
+    "Base" : "Deal __Element__ damage equal to __5%__ of your SPD, and deal additional damage according to the difference between your SPD and enemy's SPD.",
+    "SR" : "Deal __Element__ damage equal to __9%__ of your SPD, and deal additional damage according to the difference between your SPD and enemy's SPD.",
+    "UR" : "Deal __Element__ damage equal to __10%__ of your SPD, and deal additional damage according to the difference between your SPD and enemy's SPD."
+  },
+  "Double-edged Strike": {
+    "Base": "Deal __Element__ damage equal to __15%__ of your ATK/DEF/SPD, and take ¼ of the damage dealt to yourself.",
+    "SR": "Deal ?Element damage equal to __27%__ of your ATK/DEF/SPD, and take ¼ of the damage dealt to yourself.",
+    "UR": "Deal ?Element damage equal to __30%__ of your ATK/DEF/SPD, and take ¼ of the damage dealt to yourself."
+  },
+  "Elemental Strike" : {
+    "Base" : "Deal **Element** damage based on __10%__ of your ATK.",
+    "SR" : "Deal **Element** damage based on __18%__ of your HP/ATK/DEF.",
+    "UR" : "Deal **Element** damage based on __20%__ of your HP/ATK/DEF."
+  },
+  "Endurance": {
+    "Base": "Buff your allies with **Endurance**, taking __65%__ less damage from normal attacks for 3 turns.",
+    "SR": "Buff your allies with **Endurance**, taking __65%__ less damage from normal attacks for 3 turns.",
+    "UR": "Buff your allies with **Endurance**, taking __65%__ less damage from normal attacks for 3 turns."
+  },
+  "Evasion": {
+    "Base": "Increase your **EVASION** by __16%__, allowing you to dodge enemy attacks. (65% cap)",
+    "SR": "Increase your **EVASION** by __28%__, allowing you to dodge enemy attacks. (65% cap)",
+    "UR": "Increase your **EVASION** by __32%__, allowing you to dodge enemy attacks. (65% cap)"
+  },
+  "Freeze": {
+    "Base": "Inflict a stack of **Frozen** to enemy familiars, crippling their movement speed as well as permanently decreasing their ATK by __10%__.",
+    "SR": "Inflict a stack of **Frozen** to enemy familiars, crippling their movement speed as well as permanently decreasing their ATK by __18%__.",
+    "UR": "Inflict a stack of **Frozen** to enemy familiars, crippling their movement speed as well as permanently decreasing their ATK by __20%__."
+  },
+  "Lucky Coin": {
+    "Base": "Roll a __20__ sided dice. Your allied familiars gain the amount rolled x 3 HP/ATK/DEF/SPD at random.",
+    "SR": "Roll a __36__ sided dice. Your allied familiars gain the amount rolled x 3 HP/ATK/DEF/SPD at random.",
+    "UR": "Roll a __40__ sided dice. Your allied familiars gain the amount rolled x 3 HP/ATK/DEF/SPD at random."
+  },
+  "Mana Reaver": {
+    "Base": "Absorb up to __20%__ Mana from enemy familiars, and deal **True** damage equal to the Mana absorbed x10 (damage is further multiplied by number of enemy familiars).",
+    "SR": "Absorb up to __36%__ Mana from enemy familiars, and deal **True** damage equal to the Mana absorbed x10 (damage is further multiplied by number of enemy familiars).",
+    "UR": "Absorb up to __40%__ Mana from enemy familiars, and deal **True** damage equal to the Mana absorbed x10 (damage is further multiplied by number of enemy familiars)."
+  },
+  "Offensive Stance": {
+    "Base": "Increase the ATK of all allied familiars by __40%__, and simultaneously decrease their DEF by __10%__.",
+    "SR": "Increase the ATK of all allied familiars by __72%__, and simultaneously decrease their DEF by __18%__.",
+    "UR": "Increase the ATK of all allied familiars by __80%__, and simultaneously decrease their DEF by __20%__."
+  },
+  "Paralysis": {
+    "Base": "Gain a __40%__ chance to inflict a stack of Stun to enemy familiars, disabling their next turn, as well as permanently decreasing their DEF by __10%__.",
+    "SR": "Gain a __72%__ chance to inflict a stack of Stun to enemy familiars, disabling their next turn, as well as permanently decreasing their DEF by __18%__.",
+    "UR": "Gain a __80%__ chance to inflict a stack of Stun to enemy familiars, disabling their next turn, as well as permanently decreasing their DEF by __20%__."
+  },
+  "Pain for Power": {
+    "Base": "Sacrifice __7%__ of your allies current HP to increase the ATK and SPD of all allied familiars by __30%__.",
+    "SR": "Sacrifice __12%__ of your allies current HP to increase the ATK and SPD of all allied familiars by __54%__.",
+    "UR": "Sacrifice __14%__ of your allies current HP to increase the ATK and SPD of all allied familiars by __60%__."
+  },
+  "Poison": {
+    "Base": "Inflict a stack of Poison to enemy familiars, dealing 5 + 5% true damage every turn it persists.",
+    "SR": "Inflict a stack of Poison to enemy familiars, dealing 5 + 5% true damage every turn it persists.",
+    "UR": "Inflict a stack of Poison to enemy familiars, dealing 5 + 5% true damage every turn it persists."
+  },
+  "Precision": {
+    "Base": "Increase the **CRIT Chance** of ally familiars by __16%__, and increase **CRIT DMG** by __20%__.",
+    "SR": "Increase the **CRIT Chance** of ally familiars by __28%__, and increase **CRIT DMG** by __36%__.",
+    "UR": "Increase the **CRIT Chance** of ally familiars by __32%__, and increase **CRIT DMG** by __40%__."
+  },
+  "Regeneration": {
+    "Base": "Buffs ally familiars with a stack of **Regeneration**, healing them for a small amount proportional to their HP every round. (About 13.3%)",
+    "SR": "Buffs ally familiars with a stack of **Regeneration**, healing them for a small amount proportional to their HP every round. (About 13.3%)",
+    "UR": "Buffs ally familiars with a stack of **Regeneration**, healing them for a small amount proportional to their HP every round. (About 13.3%)"
+  },
+  "Rejuvenation": {
+    "Base": "Restore the HP of all allied familiars by __12%__, increase healing effects on allied familiars by __10%__, up to a maximum of __50%__ heal increase.",
+    "SR": "Restore the HP of all allied familiars by __21%__, increase healing effects on allied familiars by __18%__, up to a maximum of __50%__ heal increase.",
+    "UR": "Restore the HP of all allied familiars by __24%__, increase healing effects on allied familiars by __20%__, up to a maximum of __50%__ heal increase."
+  },
+  "Restricted Instinct": {
+    "Base": "Inflicts a stack of **Silence** on enemy for up to 3 turns, restricting any of their abilities to be used.",
+    "SR": "Inflicts a stack of **Silence** on enemy for up to 3 turns, restricting any of their abilities to be used.",
+    "UR": "Inflicts a stack of **Silence** on enemy for up to 3 turns, restricting any of their abilities to be used."
+  },
+  "Time Attack": {
+    "Base": "Deal __5%__ of your base ATK/DEF as Element damage. The damage increases by __40%__ for every turn passed.",
+    "SR": "Deal __9%__ of your base ATK/DEF as Element damage. The damage increases by __40%__ for every turn passed.",
+    "UR": "Deal __10%__ of your base ATK/DEF as Element damage. The damage increases by __40%__ for every turn passed."
+  },
+  "Time Bomb": {
+    "Base": "Inflict a stack of **Time Bomb** to enemy familiars, dealing __30%__ of your ATK as **True** damage after 1 turn.",
+    "SR": "Inflict a stack of **Time Bomb** to enemy familiars, dealing __30%__ of your ATK as **True** damage after 1 turn.",
+    "UR": "Inflict a stack of **Time Bomb** to enemy familiars, dealing __30%__ of your ATK as **True** damage after 1 turn."
+  },
+  "Trick Room": {
+    "Base": "If the enemy's ATK/DEF is higher than yours, you gain ATK/DEF equal to __60%__ of the difference between the two ATK/DEF's, and also reduce their ATK by the same amount.",
+    "SR": "If the enemy's ATK/DEF is higher than yours, you gain ATK/DEF equal to __108%__ of the difference between the two ATK/DEF's, and also reduce their ATK by the same amount.",
+    "UR": "If the enemy's ATK/DEF is higher than yours, you gain ATK/DEF equal to __120%__ of the difference between the two ATK/DEF's, and also reduce their ATK by the same amount."
+  },
+  "Ultimate Combo": {
+    "Base": "Every time this ability is casted, increase your Fighting Counter by 1. This skill deals __3%__ of your SPD x the amount of Fighting Counters you have as **True** damage. If you have a total of 3 Fighting Counters, this skill deals __30%__ of your opponent's max HP as **True** damage instead, and your Fighting Counters are reset back to 0.",
+    "SR": "Every time this ability is casted, increase your Fighting Counter by 1. This skill deals __5%__ of your SPD x the amount of Fighting Counters you have as **True** damage. If you have a total of 3 Fighting Counters, this skill deals __54%__ of your opponent's max HP as **True** damage instead, and your Fighting Counters are reset back to 0.",
+    "UR": "Every time this ability is casted, increase your Fighting Counter by 1. This skill deals __6%__ of your SPD x the amount of Fighting Counters you have as **True** damage. If you have a total of 3 Fighting Counters, this skill deals __60%__ of your opponent's max HP as **True** damage instead, and your Fighting Counters are reset back to 0."
+  },
+  "Vengeance": {
+    "Base": "Deal True damage to all enemy familiars equal to __11%__ of their ATK/DEF/SPD.",
+    "SR": "Deal True damage to all enemy familiars equal to __19%__ of their ATK/DEF/SPD.",
+    "UR": "Deal True damage to all enemy familiars equal to __22%__ of their ATK/DEF/SPD."
+  },
+
+  "Berserker": {
+    "Base": "While your health is low, increase the DEF of all allied familiars by __30%__.",
+    "SR": "While your health is low, increase the DEF of all allied familiars by __54%__.",
+    "UR": "While your health is low, increase the DEF of all allied familiars by __60%__."
+  },
+  "Blood Surge": {
+    "Base": "When your health becomes low, increase the **LIFESTEAL** of all allies by __45%__.",
+    "SR": "When your health becomes low, increase the **LIFESTEAL** of all allies by __81%__.",
+    "UR": "When your health becomes low, increase the **LIFESTEAL** of all allies by __90%__."
+  },
+  "Bloodthirster": {
+    "Base": "Increases your **LIFESTEAL**, restoring HP equal to __18%__ attack damage your allies deal, as well as increasing all healing effects by __15%__ (up to a maximum of 50%).",
+    "SR": "Increases your **LIFESTEAL**, restoring HP equal to __32%__ attack damage your allies deal, as well as increasing all healing effects by __27%__ (up to a maximum of 50%).",
+    "UR": "Increases your **LIFESTEAL**, restoring HP equal to __36%__ attack damage your allies deal, as well as increasing all healing effects by __30%__ (up to a maximum of 50%)."
+  },
+  "Celestial Influence":  {
+    "Base": "Start off the battle with 40% increased Mana Regen, while decreasing enemy familiars' Mana Regen by 10%.",
+    "SR": "Start off the battle with 72% increased Mana Regen, while decreasing enemy familiars' Mana Regen by 18%.",
+    "UR": "Start off the battle with 80% increased Mana Regen, while decreasing enemy familiars' Mana Regen by 20%."
+  },
+  "Divine Blessing":  {
+    "Base": "Start off the battle with a stack of Divine Blessing, increasing your ATK/DEF by 45%.",
+    "SR": "Start off the battle with a stack of Divine Blessing, increasing your ATK/DEF by 45%.",
+    "UR": "Start off the battle with a stack of Divine Blessing, increasing your ATK/DEF by 45%."
+  },
+  "Dominance":  {
+    "Base": "While your HP % is greater than or equal to the enemy's HP %, increase the ATK of allies by 17%.",
+    "SR": "While your HP % is greater than or equal to the enemy's HP %, increase the ATK of allies by 30%.",
+    "UR": "While your HP % is greater than or equal to the enemy's HP %, increase the ATK of allies by 34%."
+  },
+  "Executioner":  {
+    "Base": "When the enemy's health is below 27%, increase your ATK by 50%.",
+    "SR": "When the enemy's health is below 48%, increase your ATK by 90%.",
+    "UR": "When the enemy's health is below 54%, increase your ATK by 100%."
+  },
+  "Grievous Limiter":  {
+    "Base": "When the battle starts, decrease the ATK of enemy familiars by 40%. Their ATK increases by 5% every turn after that.",
+    "SR": "When the battle starts, decrease the ATK of enemy familiars by 72%. Their ATK increases by 9% every turn after that.",
+    "UR": "When the battle starts, decrease the ATK of enemy familiars by 80%. Their ATK increases by 10% every turn after that."
+  },
+
+  "Life Sap" : {
+    "Base" : "Every round, deal __3__% of the enemy familiars' max HP as damage, and heal for the same amount.",
+    "SR" : "Every round, deal __5__% of the enemy familiars' max HP as damage, and heal for the same amount.",
+    "UR" : "Every round, deal __6__% of the enemy familiars' max HP as damage, and heal for the same amount."
+  },
+  "Overload" : {
+    "Base" : "When the battle starts, increase the ATK/DEF by __55__% of all allied familiars. Your ATK/DEF deceases by __8__% every turn after that.",
+    "SR" :  "When the battle starts, increase the ATK/DEF by __99__% of all allied familiars. Your ATK/DEF deceases by __14__% every turn after that.",
+    "UR" : "When the battle starts, increase the ATK/DEF by __110__% of all allied familiars. Your ATK/DEF deceases by __16__% every turn after that."
+  },
+  "Protector" : {
+    "Base" : "When your HP drops below __25__%, all allied familiars restore __20__% HP as well as increasing their DEF by __35__%.",
+    "SR" : "When your HP drops below __25__%, all allied familiars restore __36__% HP as well as increasing their DEF by __63__%.",
+    "UR" : "When your HP drops below __25__%, all allied familiars restore __40__% HP as well as increasing their DEF by __70__%."
+  },
+  "Recoil" : {
+    "Base" : "Inflict a stack of **Recoil** to both you and your opponent (this status cannot be resisted), dealing __3__% of your HP as **True** damage per turn.",
+    "SR" : "Inflict a stack of **Recoil** to both you and your opponent (this status cannot be resisted), dealing __3__% of your HP as **True** damage per turn.",
+    "UR" : "Inflict a stack of **Recoil** to both you and your opponent (this status cannot be resisted), dealing __3__% of your HP as **True** damage per turn."
+  },
+  "Reversion" : {
+    "Base": "Once your health drops below __20%__ revert the stats and HP of all allied and enemy familiars back to their base stats. Your allied familiars also increase their DEF/SPD by __12%__ after the reversion.",
+    "SR": "Once your health drops below __36%__ revert the stays and HO of all allied and enemy familiars back to their base stats. Your allied familiars also increase their DEF/SPD by __21%__ after the reversion.",
+    "UR": "Once your health drops below __40%__ revert the stats and HP of all allied and enemy familiars back to their base stats. Your allied familiars also increase their DEF/SPD by __24%__ after the reversion."
+  },
+  "Temporal Rewind" : {
+    "Base" : "Start off the battle buffing your allies with a stack of **Temporal Rewind** (this does not stack, and refreshes the ability instead). After __3__ turns, restore your HP to half the difference between your original HP and your current HP, and deal the healed amount to your opponent.",
+    "SR" : "Start off the battle buffing your allies with a stack of **Temporal Rewind** (this does not stack, and refreshes the ability instead). After __3__ turns, restore your HP to half the difference between your original HP and your current HP, and deal the healed amount to your opponent.",
+    "UR" : "Start off the battle buffing your allies with a stack of **Temporal Rewind** (this does not stack, and refreshes the ability instead). After __3__ turns, restore your HP to half the difference between your original HP and your current HP, and deal the healed amount to your opponent."
+  },
+  "Transformation" : {
+    "Base" : "When the battle starts, decrease the SPD of all allied familiars by __15__%, and simultaneously increasing thier base HP and ATK by __30__%.",
+    "SR" : "When the battle starts, decrease the SPD of all allied familiars by __27__%, and simultaneously increasing thier base HP and ATK by __54__%.",
+    "UR" : "When the battle starts, decrease the SPD of all allied familiars by __30__%, and simultaneously increasing thier base HP and ATK by __60__%."
+  },
+  "Underdog" : {
+    "Base" : "While your HP % is lower than the enemy's HP %, increase the ATK/DEF of all allies by __15__%.",
+    "SR" : "While your HP % is lower than the enemy's HP %, increase the ATK/DEF of all allies by __27__%.",
+    "UR" : "While your HP % is lower than the enemy's HP %, increase the ATK/DEF of all allies by __30__%."
+  },
+  "Miracle Injection":
+  {
+    "Base": "[PSV] Start off the battle by decreasing your HP and max HP by __10__%. Increase your SPD/ATK/DEF by the amount decreased x2.",
+    "SR": "[PSV] Start off the battle by decreasing your HP and max HP by __18__%. Increase your SPD/ATK/DEF by the amount decreased x2.",
+    "UR": "[PSV] Start off the battle by decreasing your HP and max HP by __20__%. Increase your SPD/ATK/DEF by the amount decreased x2."
+  },
+  "Unlucky Coin":
+  {
+    "Base": "Roll a **__20__** sided dice. Enemy familiars have their HP/ATK/DEF/SPD reduced by the amount rolled x 2 at random.",
+    "SR": "Roll a **__36__** sided dice. Enemy familiars have their HP/ATK/DEF/SPD reduced by the amount rolled x 2 at random.",
+    "UR": "Roll a **__40__** sided dice. Enemy familiars have their HP/ATK/DEF/SPD reduced by the amount rolled x 2 at random."
+  },
+  "Celestial Blessing":
+  {
+    "Base": "Increase your max Mana (up to 600 total) and Mana Regeneration by **__20__**%, and heal allied familiars equal to 2.5x your max Mana.",
+    "SR": "Increase your max Mana (up to 600 total) and Mana Regeneration by **__36__**%, and heal allied familiars equal to 2.5x your max Mana.",
+    "UR": "Increase your max Mana (up to 600 total) and Mana Regeneration by **__40__**%, and heal allied familiars equal to 2.5x your max Mana."
+  }
+}

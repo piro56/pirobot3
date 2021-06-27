@@ -1,0 +1,35 @@
+{
+    "SEARCHCARDS": [
+        "Yuno Gasai",
+        "Mayuri",
+        "Byakuya Togami"
+    ],
+    "DEFAULT": {
+        "ENABLED": true,
+        "MOBILE": true,
+        "HIGHCHANCEONLY": false,
+        "RGB": [
+            69,
+            101,
+            222
+        ],
+        "DELETE": false,
+        "DELETEDELAY": 10,
+        "DELETESEARCH": false,
+        "LASTUSERNAME": ""
+    },
+    "393982976125435934": {
+        "ENABLED": false,
+        "MOBILE": true,
+        "HIGHCHANCEONLY": false,
+        "RGB": [
+            69,
+            101,
+            222
+        ],
+        "DELETE": true,
+        "DELETEDELAY": 10,
+        "DELETESEARCH": false,
+        "LASTUSERNAME": "Piro"
+    }
+}
