@@ -67,7 +67,7 @@
         "FLOOR": 0,
         "TALENT": "Precision",
         "QUOTE": "Even if we forget the faces of our friends, we will never forget the bonds that were carved into our souls. | ID: 521",
-        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858534473372401694/card.png"
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/859924892082241546/card.png"
     },
     "Yami Sukehiro": {
         "Element": "Dark \ud83c\udf19",
@@ -669,7 +669,7 @@
         "FLOOR": 0,
         "TALENT": "Celestial Blessing",
         "QUOTE": "Stay still, I can use some of my powers to heal your wounds. | ID: 506",
-        "LINK": "https://cdn.discordapp.com/attachments/809217651489767444/858536466703843348/card.png"
+        "LINK": "https://cdn.discordapp.com/attachments/840660719862939698/859945015282761788/card.png"
     },
     "Kenpachi Zaraki": {
         "ELEMENT": "Electric \u26a1",
@@ -754,5 +754,131 @@
         "TALENT": "Trick Room",
         "QUOTE": "I was always alone. What the hell am I fighting for? | ID: 178",
         "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/858769465105580062/card.png"
+    },
+    "Yukichi Fukuzawa": {
+        "ELEMENT": "Water \ud83d\udca7",
+        "HP": 89,
+        "ATK": 94,
+        "DEF": 65,
+        "SPD": 77,
+        "TOTAL": 325,
+        "SERIES": "Bungou Stray Dogs",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Restricted Instinct",
+        "QUOTE": "One of our own is in danger. We must help him. What greater rationale do we need in this world? | ID: 505",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/859924847769550869/card.png"
+    },
+    "Satoru Gojo": {
+        "ELEMENT": "Electric \u26a1",
+        "HP": 86,
+        "ATK": 83,
+        "DEF": 78,
+        "SPD": 78,
+        "TOTAL": 325,
+        "SERIES": "Jujutsu Kaisen",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Berserker",
+        "QUOTE": "It'll be fine. I'm the strongest there is, after all. | ID: 399",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/859924867242524733/card.png"
+    },
+    "Akiko Yosano": {
+        "ELEMENT": "Neutral \u2728",
+        "HP": 85,
+        "ATK": 75,
+        "DEF": 85,
+        "SPD": 80,
+        "TOTAL": 325,
+        "SERIES": "Bungou Stray Dogs",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Protector",
+        "QUOTE": "It's my fault that those close to me are dead. | ID: 10",
+        "LINK": "https://cdn.discordapp.com/attachments/840660719862939698/859983578024247296/card.png"
+    },
+    "Hestia": {
+        "ELEMENT": "Light \u2600\ufe0f",
+        "HP": 85,
+        "ATK": 73,
+        "DEF": 78,
+        "SPD": 87,
+        "TOTAL": 323,
+        "SERIES": "Danmachi",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Vengeance",
+        "QUOTE": "In the end, guilt is just the question of whether you can forgive yourself or not. | ID: 144",
+        "LINK": "https://cdn.discordapp.com/attachments/777249492256817164/859994326188818452/card.png"
+    },
+    "Asia Argento": {
+        "ELEMENT": "Light \u2600\ufe0f",
+        "HP": 99,
+        "ATK": 81,
+        "DEF": 62,
+        "SPD": 81,
+        "TOTAL": 323,
+        "SERIES": "High School DxD",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Regeneration",
+        "QUOTE": "He took care of me, and now it's my turn to take care of him! | ID: 31",
+        "LINK": "https://cdn.discordapp.com/attachments/779838337745158194/859995969596293130/card.png"
+    },
+    "Escanor": {
+        "ELEMENT": "Fire \ud83d\udd25",
+        "HP": 79,
+        "ATK": 100,
+        "DEF": 80,
+        "SPD": 64,
+        "TOTAL": 323,
+        "SERIES": "7 Deadly Sins",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Overload",
+        "QUOTE": "Pardon me. I feel sick when I'm looked down at by someone smaller than me. | ID: 97",
+        "LINK": "https://cdn.discordapp.com/attachments/779838337745158194/859995985072881734/card.png"
+    },
+    "Fran": {
+        "ELEMENT": "Grass \ud83c\udf43",
+        "HP": 76,
+        "ATK": 62,
+        "DEF": 98,
+        "SPD": 84,
+        "TOTAL": 320,
+        "SERIES": "Katekyo Hitman Reborn",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Double-edged Strike",
+        "QUOTE": "Don\u2019t you ever spare a thought for the environmental crisis?\u201d | ID: 110",
+        "LINK": "https://cdn.discordapp.com/attachments/730985665969389588/860010093458620436/card.png"
+    },
+    "Izumi Kyoka": {
+        "ELEMENT": "Water \ud83d\udca7",
+        "HP": 85,
+        "ATK": 80,
+        "DEF": 82,
+        "SPD": 80,
+        "TOTAL": 327,
+        "SERIES": "Bungou Stray Dogs",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Berserker",
+        "QUOTE": "I saw a bright world. I cannot go back to a time when I did not know such a thing existed. | ID: 177",
+        "LINK": "https://cdn.discordapp.com/attachments/737006299799093382/860012686975434752/card.png"
+    },
+    "Motoyasu Kitamura": {
+        "ELEMENT": "Electric \u26a1",
+        "HP": 72,
+        "ATK": 90,
+        "DEF": 82,
+        "SPD": 81,
+        "TOTAL": 325,
+        "SERIES": "The Rising Of The Shield Hero",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Breaker",
+        "QUOTE": "I guess you're not the shield hero for nothing. | ID: 319",
+        "LINK": "https://cdn.discordapp.com/attachments/737006299799093382/860020289521582090/card.png"
     }
 }
