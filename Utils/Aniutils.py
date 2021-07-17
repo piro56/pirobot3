@@ -3,7 +3,7 @@ import math
 import discord
 from math import floor
 from Utils.AnidexConfig import AniConfig
-cards = AniConfig("./JSONs/cards.json")
+cards = AniConfig("./JSONs/cards2.json")
 rarityDict = {
     "COMMON":1,
     "C":1,

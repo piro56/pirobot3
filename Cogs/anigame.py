@@ -17,10 +17,10 @@ elementDict = {
     "Dark 🌙": discord.Colour.from_rgb(53, 8, 92),
     "Fire 🔥": discord.Colour.from_rgb(232, 45, 16),
     "Light ☀️": discord.Colour.from_rgb(255, 252, 133),
-    "Neutral ✨":discord.Colour.from_rgb(189, 182, 143),
-    "Electric ⚡":discord.Colour.from_rgb(225, 232, 9),
-    "Ground ⛰️":discord.Colour.from_rgb(191, 109, 21),
-    "Water 💧":discord.Colour.from_rgb(31, 151, 242)
+    "Neutral ✨": discord.Colour.from_rgb(189, 182, 143),
+    "Electric ⚡": discord.Colour.from_rgb(225, 232, 9),
+    "Ground ⛰️": discord.Colour.from_rgb(191, 109, 21),
+    "Water 💧": discord.Colour.from_rgb(31, 151, 242)
 }
 class AnigameCog(commands.Cog):
     def __init__(self, client):
@@ -32,6 +32,8 @@ class AnigameCog(commands.Cog):
         self.locations = Config("./JSONs/locationinfo.json")
         self.load_emojis()
         self.messages = Config("./JSONs/messages.json")
+        self.cinforeplace = True
+        self.seriesupdate = False
     @commands.Cog.listener(name="on_message")
     async def on_message(self, msg):
         if self.client.user.mentioned_in(msg):
@@ -42,24 +44,79 @@ class AnigameCog(commands.Cog):
             if self.searchsettings[str(msg.author.id)]["DELETESEARCH"]:
                 await msg.delete(delay=10)
             return
-        # .cinfo
+
         if(len(msg.embeds) != 0 and msg.author.id == 571027211407196161):
+            # .cinfo
             if(msg.embeds[0].description and "**Card Series:**" in msg.embeds[0].description and not ("**Familiarity" in msg.embeds[0].description)):
-                print("CINFO!")
-                self.process_card(msg.embeds[0], self.anidex, self.linkConfig)
+                await self.process_card(msg.embeds[0], self.anidex, msg)
                 cardinfo = self.anidex.get_precise(msg.embeds[0].title.split("*")[2])
-                await msg.delete()
-                await msg.channel.send(embed=self.cardEmbed(cardinfo))
+                if(self.cinforeplace):
+                    await msg.delete()
+                    await msg.channel.send(embed=self.cardEmbed(cardinfo))
             # Raid Search
-            elif msg.embeds[0].footer.text:
+            elif msg.embeds[0].footer.text and "Type .rd battle when you have Energy!" in msg.embeds[0].footer.text:
                 #if "Note: You have to clear a location/stage" in msg.embeds[0].footer.text and "393982976125435934" in msg.embeds[0].author.icon_url:
                 #    await self.locationstuff(msg)
-                if "Type .rd battle when you have Energy!" in msg.embeds[0].footer.text:
-                    partyEmbed = self.processRaidParty(msg.embeds[0], self.emojis)
-                    await msg.channel.send(embed=partyEmbed)
-                    await msg.delete()
+                partyEmbed = self.processRaidParty(msg.embeds[0], self.emojis)
+                await msg.channel.send(embed=partyEmbed)
+                await msg.delete()
+            # .bt delete
             elif "Challenging Floor" in msg.embeds[0].title:
                 await self.deleting_battles_func(msg, msg.embeds[0])
+            # Series & Card Assignment
+            elif self.seriesupdate and "Anidex" in msg.embeds[0].title and "393982976125435934" in msg.embeds[0].author.icon_url:
+                numCards = int(msg.embeds[0].footer.text.split("/")[1].strip())
+                cardsTracked = 0
+                if(numCards == 0):
+                    return
+                series = []
+                ts = time.time()
+                def check(before, after):
+                    return before.author.id == 571027211407196161 and before.id == msg.id
+                def reactioncheck(reaction, user):
+                    return reaction.message.id == msg.id and user.id == 393982976125435934
+                while(time.time() < ts+60):
+                    embed = msg.embeds[0]
+                    desc = embed.description.splitlines()
+                    for i in range(0, len(desc)):
+                        if(desc[i].startswith("**ID")):
+                            card = desc[i] + "\n" + desc[i+1]
+                            series.append(card.encode("ascii", "ignore").decode())
+                            cardsTracked += 1
+                    if cardsTracked == numCards:
+                        break
+                    try:
+                        await self.client.wait_for('message_edit', check = check, timeout=60)
+                    except asyncio.TimeoutError:
+                        break
+                index = 0
+                resultStr = ""
+                completedSeries = {}
+                for card in series:
+                    cardname = card.split("|")[1].split("<")[0].strip()
+                    index = index+1
+                    completedSeries[cardname] = f"{index}, {index+numCards}, {index+numCards*2}\n"
+                    resultStr += f"{cardname} - {index}, {index+numCards}, {index+numCards*2}\n"
+                msg = await msg.channel.send(resultStr)
+                await msg.add_reaction("✅")
+                await msg.add_reaction("❌")
+                try:
+                    reaction, user = await self.client.wait_for('reaction_add', check=reactioncheck, timeout=30)
+                except asyncio.TimeoutError:
+                    await msg.delete()
+                if reaction.emoji == "✅":
+                    for key in completedSeries.keys():
+                        if key in self.anidex:
+                            changed = self.anidex[key]
+                            changed["FLOOR"] = completedSeries[key]
+                            self.anidex[key] = changed
+                    await msg.channel.send(f"Done!")
+                elif reaction.emoji == "❌":
+                    await msg.delete()
+
+
+
+
 
 
     @commands.command(aliases=["cinfo","ci"])
@@ -67,65 +124,34 @@ class AnigameCog(commands.Cog):
         # this should be an array
         cardinfo = self.anidex.get_precise(card)
         await ctx.channel.send(embed=self.cardEmbed(cardinfo))
-
-    @commands.command(name='linkcards')
+    @commands.command(name='aniadmin')
     @is_botadmin()
-    async def _linkcards(self, ctx):
-        with open('./JSONs/cards.json', 'r') as f:
-            carddb = json.load(f)
-        with open('./JSONs/cardlinks.json', 'r') as f:
-            linkdb = json.load(f)
-        keys = carddb.keys()
+    async def _admincinfo(self, ctx, arg=""):
+        arg = arg.upper()
+        if arg == "":
+            emb = discord.Embed(title="Admin Commands", color=discord.Color.random(),
+                                description="**Toggles:**\n`cinfo` `seriesupdate`\n"
+                                            "**Commands:**\n`applylocs` - Applies location numbers with series on cards.\n")
+            await ctx.channel.send(embed=emb)
+        elif arg == "CINFO":
+            self.cinforeplace = not self.cinforeplace
+            await ctx.channel.send(f".cinfo replacement is: {self.cinforeplace}")
+        elif arg == "SERIESUPDATE":
+            self.seriesupdate = not self.seriesupdate
+            await ctx.channel.send(f"Series updates for Piro are: {self.seriesupdate}")
+    @commands.command(name="applylocs")
+    @is_botadmin()
+    async def _applylocs(self, ctx):
+        with open("./JSONs/locationinfo.json", 'r') as f:
+            db = json.load(f)
+        dex = self.anidex.all()
+        keys = dex.keys()
         for key in keys:
-            arr = carddb[key]
-            if(len(arr) >= 12):
-                continue
-            else:
-                arr.append(linkdb[key])
-                carddb[key] = arr
-        with open('./JSONs/cards.json', 'w') as f:
-            json.dump(carddb, f, indent=4)
-    @commands.command(name='reformatcards')
-    @is_botadmin()
-    async def _reformat(self, ctx):
-        with open('./JSONs/cards.json', 'r') as f:
-            carddb = json.load(f)
-        cards = {}
-        keys = carddb.keys()
-        for key in keys:
-            #element, hp, atk, def, speed, total, series, loc, floor, talent, quote, link
-            cinfo =  carddb[key]
-            cards[key] = {
-                "Element": cinfo[0],
-                "HP": cinfo[1], "ATK": cinfo[2], "DEF": cinfo[3], "SPD":  cinfo[4],
-                "TOTAL": cinfo[5], "SERIES": cinfo[6],
-                "LOC": cinfo[7], "FLOOR": cinfo[8],"TALENT": cinfo[9],
-                "QUOTE": cinfo[10], "LINK": cinfo[11]
-            }
-        with open('./JSONs/cards.json', 'w') as f:
-            json.dump(cards, f, indent=4)
-    @commands.command(name='refanisearch')
-    @is_botadmin()
-    async def _refanisearch(self,ctx):
-        newData = {}
-        oldsearch = self.searchsettings.all()
-        for key in oldsearch.keys():
-            if(key == "DEFAULT" or key == "SEARCH CARDS:"):
-                continue
-            newData[key] = {
-                "ENABLED": oldsearch[key][0],
-                "MOBILE": oldsearch[key][1],
-                "HIGHCHANCEONLY": oldsearch[key][2],
-                "RGB": [oldsearch[key][3],oldsearch[key][4],oldsearch[key][5]],
-                "DELETE": oldsearch[key][6],
-                "DELETEDELAY": oldsearch[key][7],
-                "DELETESEARCH": oldsearch[key][8],
-                "LASTUSERNAME": oldsearch[key][9]
-            }
-        self.searchsettings.dump(newData)
-        await ctx.channel.send("done.")
+            if dex[key]["SERIES"] in db:
+                dex[key]["LOC"] = db[dex[key]["SERIES"]]["Number"]
+        self.anidex.dump(dex)
 
-    @commands.command(aliases=["cstat"])
+    @commands.command(aliases=["cstat", "raidstat"])
     async def cardstat(self, ctx, *, cstats = ""):
         usageString = "**Correct Usage:**\n`Rarity Evo Level Card Name`\n" \
                       "`SR 3 1350 Alice Zuberg`\n" \
@@ -171,13 +197,13 @@ class AnigameCog(commands.Cog):
             else:
                 level = args[0]
                 args.pop(0)
-        print(args)
         await ctx.send(f"Rarity: {rarity} Evo: {evo} Level {level}")
         cardinf = self.anidex.get_precise(" ".join(args))
         if not cardinf:
             await ctx.channel.send("Card not found!")
             return
-        self.cardStat(self.dict_to_array(cardinf[0]), rarity, evo, level)
+        stats = self.cardStat(cardinf[0], rarity, evo, level)
+        await ctx.channel.send(embed=self.cardEmbed(cardinf, stats))
         pass
 
     def dict_to_array(self, carddict):
@@ -196,47 +222,63 @@ class AnigameCog(commands.Cog):
             elif rarity == "SR": rarity = 4
             else:   rarity = 5
         statMultiplier = (1 + float(rarity) * 0.2) * (1 + float(level) * 0.005) * (1 + 0.15 * (float(evo) - 1))
-        print(statMultiplier)
-        stats = [floor(cardinfo[1]*statMultiplier), floor(cardinfo[2]*statMultiplier),
-                floor(cardinfo[3]*statMultiplier), floor(cardinfo[4]*statMultiplier), 0]
+        stats = [floor(cardinfo["HP"]*statMultiplier), floor(cardinfo["ATK"]*statMultiplier),
+                floor(cardinfo["DEF"]*statMultiplier), floor(cardinfo["SPD"]*statMultiplier), 0]
         total = sum(stats)
         stats[4] = total
         return stats
 
     # Returns Card Embed of cinfo
-    def cardEmbed(self, cardinfo):
+    def cardEmbed(self, cardinfo, altstats=None):
         #element, hp, atk, def, spd, total, locname, loc, fl, talent, footer, name
         cname = cardinfo[1]
-        cstats = self.dict_to_array(cardinfo[0])
+        cardinfo = cardinfo[0]
         embDesc = f"""
-            **Card Series:** {cstats[6]}\n**Location:** {cstats[7]}\n**Floor:** {cstats[8]}
-            **Type:** {cstats[0]}"""
+            **Card Series:** {cardinfo["SERIES"]}\n**Location:** {cardinfo["LOC"]}\n**Floor:** {cardinfo["FLOOR"]}
+            **Type:** {cardinfo["ELEMENT"]}"""
         emb = discord.Embed(
             title= cname,
-            color= elementDict[cstats[0]],
+            color= elementDict[cardinfo["ELEMENT"]],
             description=embDesc
         )
-        emb.add_field(name="**BASE**",
-                      value=f"**HP:** {cstats[1]}\n**ATK:** {cstats[2]}\n**DEF:** {cstats[3]}\n**SPD:** {cstats[4]}\n**TOTAL:** {cstats[5]}",
-                      inline= True)
-        emb.add_field(name="**Maxed SR**",
-                      value=f"**HP:** {floor(cstats[1]*2.925)}\n**ATK:** {floor(cstats[2]*2.925)}\n"
-                            f"**DEF:** {floor(cstats[3]*2.925)}\n**SPD:** {floor(cstats[4]*2.925)}\n"
-                            f"**TOTAL:** {floor(cstats[1]*2.925)+floor(cstats[2]*2.925)+floor(cstats[3]*2.925)+floor(cstats[4]*2.925)}",
-                      inline= True)
-        emb.add_field(name="**Maxed UR**",
-                      value=f"**HP:** {floor(cstats[1]*3.38)}\n**ATK:** {floor(cstats[2]*3.38)}\n"
-                            f"**DEF:** {floor(cstats[3]*3.38)}\n**SPD:** {floor(cstats[4]*3.38)}\n"
-                            f"**TOTAL:** {floor(cstats[1]*3.38)+floor(cstats[2]*3.38)+floor(cstats[3]*3.38)+floor(cstats[4]*3.38)}",
-                      inline= True)
+        if altstats is None:
+            hp = cardinfo['HP']
+            atk = cardinfo['ATK']
+            defense = cardinfo['DEF']
+            spd = cardinfo['SPD']
+            total = cardinfo['TOTAL']
+        else:
+            hp = altstats[0]
+            atk = altstats[1]
+            defense = altstats[2]
+            spd = altstats[3]
+            total = altstats[4]
+        if altstats is None:
+            emb.add_field(name="**BASE**",
+                          value=f"**HP:** {hp}\n**ATK:** {atk}\n"
+                                f"**DEF:** {defense}\n**SPD:** {spd}\n**TOTAL:** {total}",
+                          inline=True)
+            emb.add_field(name="**Maxed SR**",
+                          value=f"**HP:** {floor(hp*2.925)}\n**ATK:** {floor(atk*2.925)}\n"
+                                f"**DEF:** {floor(defense*2.925)}\n**SPD:** {floor(spd*2.925)}\n"
+                                f"**TOTAL:** {floor(hp*2.925)+floor(atk*2.925)+floor(defense*2.925)+floor(spd*2.925)}",
+                          inline=True)
+            emb.add_field(name="**Maxed UR**",
+                          value=f"**HP:** {floor(hp*3.38)}\n**ATK:** {floor(atk*3.38)}\n"
+                                f"**DEF:** {floor(defense*3.38)}\n**SPD:** {floor(spd*3.38)}\n"
+                                f"**TOTAL:** {floor(hp*3.38)+floor(atk*3.38)+floor(defense*3.38)+floor(spd*3.38)}",
+                          inline=True)
+        else:
+            emb.add_field(name="**Stats**",
+                          value=f"**HP:** {hp}\n**ATK:** {atk}\n"
+                                f"**DEF:** {defense}\n**SPD:** {spd}\n**TOTAL:** {total}",
+                          inline=True)
         try:
-            emb.add_field(name="**SR Talent**", value=f"{cstats[9]}: {self.talents[cstats[9]]['SR']}", inline= False)
-            emb.add_field(name="**UR Talent**", value=f"{cstats[9]}: {self.talents[cstats[9]]['UR']}", inline=False)
+            emb.add_field(name="**Talent**", value=f"**{cardinfo['TALENT']}**: {cardinfo['ABILITY']}", inline=False)
         except:
             pass
-        if(len(cstats) >= 12):
-            emb.set_image(url=cstats[11])
-        emb.set_footer(text=cstats[10])
+        emb.set_image(url=cardinfo['LINK'])
+        emb.set_footer(text=cardinfo['QUOTE'])
         return emb
 
     def load_emojis(self):
@@ -250,11 +292,11 @@ class AnigameCog(commands.Cog):
         emojis["yellowOpen"] = self.client.get_emoji(804100575921700912)
         emojis["yellowFull"] = self.client.get_emoji(804108415395823687)
         self.emojis = emojis
-
+    async def dexseriesprocess(self,msg):
+        pass
     async def locationstuff(self, msg):
         embed = msg.embeds[0]
         locations = {}
-
         def check(before, after):
             return before.author.id == 571027211407196161 and before.id == msg.id
         ts = time.time()
@@ -297,7 +339,7 @@ class AnigameCog(commands.Cog):
             await msg.channel.send(random.choice(self.messages["DELETE"]))
             await msg.delete()
 
-    def process_card(self, embed, config, linkConfig):
+    async def process_card(self, embed, config, msg):
         lines = embed.description.splitlines()
         name = (embed.title.split("*")[2])
         cardtype = lines[2].split("*")[4].strip()
@@ -309,7 +351,8 @@ class AnigameCog(commands.Cog):
         series = lines[0].split("*")[4].strip()
         loc = 0
         floor = 0
-        talent = embed.fields[0].value.split("*")[2]
+        talent = "".join(embed.fields[0].value.split("*")[2:]).split(":")[0]
+        ability = "".join(embed.fields[0].value.split("*")[4:]).split(":")[1].strip()
         quote = embed.footer.text
         link = embed.image.url
         new_card = True
@@ -321,10 +364,11 @@ class AnigameCog(commands.Cog):
             "ELEMENT": cardtype,
             "HP": hp, "ATK": atk, "DEF": defense, "SPD": speed, "TOTAL": total,
             "SERIES": series, "LOC": loc, "FLOOR": floor, "TALENT": talent,
-            "QUOTE": quote, "LINK": link
+            "QUOTE": quote, "LINK": link, "ABILITY": ability
         }
         if (new_card):
             print(f"New Card: {name}")
+            await msg.add_reaction("✅")
         return new_card
 
     def processRaidParty(self, embed, emojis):
@@ -346,7 +390,10 @@ class AnigameCog(commands.Cog):
         timeLeft = (int)(time_left_line[1].split('m')[0].replace('\u200b' or ' ', '')) + hrs * 60
         list_Lines = desc.splitlines()
         name = (" ".join(list_Lines[0].split("[")[0].split("Level")[1].split(" ")[2:])).strip()
-        piroEmbed.set_thumbnail(url=self.anidex.get_precise(name)[0]["LINK"])
+        if(self.anidex[name]):
+            piroEmbed.set_thumbnail(url=self.anidex[name]["LINK"])
+        else:
+            piroEmbed.set_thumbnail(url=embed.thumbnail.url)
         list_Lines[1] = list_Lines[1].replace("**", "")
         firstnum = list_Lines[1].split('/')[0].replace('\u200b' or ' ', '')
         hp_left = int(firstnum)
