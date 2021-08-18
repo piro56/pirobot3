@@ -15,8 +15,7 @@ log = logging.getLogger(__name__)
 description = """This is PiroBot, a bot written by Piro#0056 for random commands!"""
 startup_cogs = [
     "Cogs.cogs",
-    "Cogs.anigame",
-    "Cogs.datamanager"
+    "Cogs.anigame"
 ]
 def _prefix_callable(bot,msg):
     if msg.guild is not None:

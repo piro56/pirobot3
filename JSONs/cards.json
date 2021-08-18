@@ -7303,5 +7303,20 @@
         "QUOTE": "I was always alone. What the hell am I fighting for? | ID: 178",
         "LINK": "https://cdn.discordapp.com/attachments/730985665969389588/865289503278628925/card.png",
         "ABILITY": "If the enemy familiars' ATK is higher than yours, your allies gain ATK equal to __60__% of the difference between the two ATK's, and simultaneously reduce their ATK by the same amount."
+    },
+    "Violet Evergarden": {
+        "ELEMENT": "Grass \ud83c\udf43",
+        "HP": 74,
+        "ATK": 93,
+        "DEF": 80,
+        "SPD": 90,
+        "TOTAL": 337,
+        "SERIES": "Violet Evergarden",
+        "LOC": 0,
+        "FLOOR": 0,
+        "TALENT": "Breaker",
+        "QUOTE": "I finally know what \u2018I love you\u2019 means. | ID: 488",
+        "LINK": "https://cdn.discordapp.com/attachments/798009791930695703/877640409868820551/card.png",
+        "ABILITY": "Decrease the DEF of all enemy familiars by __20__%."
     }
 }

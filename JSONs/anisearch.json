@@ -27,7 +27,7 @@
             101,
             222
         ],
-        "DELETE": false,
+        "DELETE": true,
         "DELETEDELAY": 10,
         "DELETESEARCH": true,
         "LASTUSERNAME": "Piro"
